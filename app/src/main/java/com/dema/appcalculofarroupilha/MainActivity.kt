@@ -7,7 +7,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,28 +19,28 @@ import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var txtInputVolumePerArea : TextInputLayout
-    private lateinit var txtEditVolumePerArea : TextInputEditText
+    private lateinit var txtEditVolumePerArea : EditText
     private lateinit var spinnerVolumePerAreaMeasure : Spinner
-    private lateinit var txtInputContainerVolume : TextInputLayout
-    private lateinit var txtEditContainerVolume : TextInputEditText
+    private lateinit var txtEditContainerVolume : EditText
     private lateinit var spinnerContainerVolumeMeasure : Spinner
-    private lateinit var txtInputTotalArea : TextInputLayout
-    private lateinit var txtEditTotalArea : TextInputEditText
+    private lateinit var txtEditTotalArea : EditText
     private lateinit var spinnerAreaTotalMeasure : Spinner
     private lateinit var btnCalculate : Button
 
     private var listOfOptionsVolumePerAreaMeasure : ArrayList<String> = arrayListOf(
         "L/m", "L/cm", "mL/m", "mL/cm"
     )
+    private var currentVolumePerAreaMeasureSelected = ""
 
     private var listOfOptionsContainerVolumeMeasure : ArrayList<String> = arrayListOf(
         "L", "mL"
     )
+    private var currentContainerVolumeMeasureSelected = ""
 
     private var listOfOptionsTotalArea : ArrayList<String> = arrayListOf(
         "m", "cm"
     )
+    private var currentTotalAreaMeasureSelected = ""
 
     private val tag = javaClass.name
 
@@ -52,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        txtInputVolumePerArea = findViewById(R.id.txt_input_volume_per_area)
         txtEditVolumePerArea = findViewById(R.id.txt_edit_volume_per_area)
 
         spinnerVolumePerAreaMeasure = findViewById(R.id.spinner_volume_per_area_measure)
@@ -67,15 +68,15 @@ class MainActivity : AppCompatActivity() {
             object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
+                currentVolumePerAreaMeasureSelected = listOfOptionsVolumePerAreaMeasure[p2]
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
+                currentVolumePerAreaMeasureSelected = listOfOptionsVolumePerAreaMeasure[0]
             }
 
         }
 
-        txtInputContainerVolume = findViewById(R.id.txt_input_container_volume)
         txtEditContainerVolume = findViewById(R.id.txt_edit_container_volume)
 
         spinnerContainerVolumeMeasure = findViewById(R.id.spinner_container_volume_measure)
@@ -90,15 +91,15 @@ class MainActivity : AppCompatActivity() {
             object : AdapterView.OnItemSelectedListener {
 
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
+                    currentContainerVolumeMeasureSelected = listOfOptionsContainerVolumeMeasure[p2]
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
+                    currentContainerVolumeMeasureSelected = listOfOptionsContainerVolumeMeasure[0]
                 }
 
             }
 
-        txtInputTotalArea = findViewById(R.id.txt_input_total_area)
         txtEditTotalArea = findViewById(R.id.txt_edit_total_area)
 
         spinnerAreaTotalMeasure = findViewById(R.id.spinner_area_total_measure)
@@ -113,14 +114,49 @@ class MainActivity : AppCompatActivity() {
             object : AdapterView.OnItemSelectedListener {
 
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
+                    currentTotalAreaMeasureSelected = listOfOptionsTotalArea[p2]
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
+                    currentTotalAreaMeasureSelected = listOfOptionsTotalArea[0]
                 }
 
             }
 
         btnCalculate = findViewById(R.id.btn_calculate)
+    }
+
+    private fun validation() : Boolean {
+        var isValid = txtEditVolumePerArea.text.toString().isNotEmpty()
+                && txtEditContainerVolume.text.toString().isNotEmpty()
+                && txtEditTotalArea.text.toString().isNotEmpty()
+
+//        if (!isValid) {
+//            Toast.makeText(this@MainActivity, "Digite todos os valores!", Toast.LENGTH_LONG).show()
+//        }
+
+        return isValid
+    }
+
+    private fun calculate() {
+        val validate = validation()
+
+//        if (validate)
+//            return
+
+        val volumePerArea = txtEditVolumePerArea.text.toString()
+        val containerVolume = txtEditContainerVolume.text.toString()
+        val totalArea = txtEditTotalArea.text.toString()
+
+        if (volumePerArea.isNotEmpty() && containerVolume.isNotEmpty() && totalArea.isNotEmpty()) {
+            var containerPerArea = containerVolume.toDouble() / volumePerArea.toDouble()
+            var totalContainers = totalArea.toDouble() / containerPerArea
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        btnCalculate.setOnClickListener { calculate() }
     }
 }

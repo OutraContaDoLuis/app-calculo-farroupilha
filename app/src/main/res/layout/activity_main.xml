@@ -10,105 +10,79 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Volume por area:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_input_volume_per_area"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Volume por unidade: (Ex: 1.8kg/m, 1mL/L)"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_volume_per_area_measure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_edit_volume_per_area"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="Digite aqui"
+        android:inputType="number"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spinner_volume_per_area_measure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_edit_volume_per_area"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Digite aqui"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Medida: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/spinner_volume_per_area_measure"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
         android:id="@+id/spinner_volume_per_area_measure"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        style="@android:style/Widget.Material.Light.Spinner.Underlined"
         android:layout_width="120dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_input_volume_per_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_input_volume_per_area" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:paddingVertical="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_edit_volume_per_area"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Volume do recipiente: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_input_volume_per_area" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_input_container_volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="false"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Volume do recipiente: (Ex: balde de 18L) "
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_container_volume_measure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_edit_volume_per_area" />
+
+    <EditText
+        android:id="@+id/txt_edit_container_volume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="Digite aqui"
+        android:inputType="number"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spinner_container_volume_measure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_edit_container_volume"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Digite aqui"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medida:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/spinner_container_volume_measure"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Spinner
         android:id="@+id/spinner_container_volume_measure"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        style="@android:style/Widget.Material.Light.Spinner.Underlined"
         android:layout_width="120dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_input_container_volume"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_input_container_volume" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:paddingVertical="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_edit_container_volume"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -117,48 +91,34 @@
         android:layout_marginTop="24dp"
         android:text="Area total: "
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txt_input_total_area"
-        app:layout_constraintTop_toBottomOf="@+id/txt_input_container_volume" />
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/txt_edit_total_area"
+        app:layout_constraintTop_toBottomOf="@+id/txt_edit_container_volume" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_input_total_area"
+    <EditText
+        android:id="@+id/txt_edit_total_area"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="Digite aqui"
+        android:inputType="number"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spinner_area_total_measure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_edit_total_area"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Digite aqui"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medida: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/spinner_area_total_measure"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
         android:id="@+id/spinner_area_total_measure"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        style="@android:style/Widget.Material.Light.Spinner.Underlined"
         android:layout_width="120dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_input_total_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_input_total_area"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:paddingVertical="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_edit_total_area"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_calculate"
@@ -169,6 +129,19 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_input_total_area" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_edit_total_area" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_measures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        app:tint="@color/white"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_imagesearch_roller_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
