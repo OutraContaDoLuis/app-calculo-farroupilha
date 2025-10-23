@@ -62,7 +62,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Calcular quanto um produto (litro/quilo) faz por área (m/cm)"
+                                android:text="Calcular quanto um produto (litro/quilo) faz por área (m²/cm²)"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -94,7 +94,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginBottom="16dp"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/textView8"
@@ -121,7 +121,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="Area (m/cm)"
+                            android:text="Área (m²/cm²)"
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -212,7 +212,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Calcular quanto um produto (litro/quilo) faz por área (m/cm)"
+                                android:text="Calcular quanto um produto (litro/quilo) faz por área (m²/cm²)"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -251,10 +251,12 @@
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_capacity_container"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_capacity_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -270,10 +272,12 @@
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_volume_per_volume"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_volume_per_volume"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -285,14 +289,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="Area total (m/cm)"
+                            android:text="Área total (m²/cm²)"
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_area_calculate_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_area_calculate_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -300,7 +306,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <Button
-                            android:id="@+id/button2"
+                            android:id="@+id/btn_calculate_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -308,7 +314,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView16"
+                            android:id="@+id/txt_capacity_container"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -316,21 +322,21 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView17"
+                            android:id="@+id/txt_volume_per_volume"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Quantos mL por Litro"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView18"
+                            android:id="@+id/txt_area_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Area total"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/txt_results_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Resultado final"
@@ -409,7 +415,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="16dp"
                         android:orientation="vertical"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <TextView
                             android:id="@+id/textView22"
@@ -419,10 +425,12 @@
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_capacity_container_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_capacity_container_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -438,10 +446,12 @@
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_quantity_volume_per_area"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_quantity_volume_per_area"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -453,14 +463,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="Area total para ser usado o produto"
+                            android:text="Área total para ser usado o produto"
                             android:textSize="12sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_total_area_3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/txt_edit_total_area_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Digite aqui"
@@ -468,7 +480,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <Button
-                            android:id="@+id/button3"
+                            android:id="@+id/btn_calculate_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -476,7 +488,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView25"
+                            android:id="@+id/txt_capacity_container_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -484,21 +496,21 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView26"
+                            android:id="@+id/txt_product_volume_per_area"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView27"
+                            android:id="@+id/txt_area_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/textView28"
+                            android:id="@+id/txt_results_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
