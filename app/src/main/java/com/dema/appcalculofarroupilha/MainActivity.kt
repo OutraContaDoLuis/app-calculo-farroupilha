@@ -19,6 +19,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.flagging.Flags
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.lang.reflect.Type
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity() {
     private var isExpandedCardCalculateVolumePerArea = false
     private var isExpandedCardCalculateVolumePerArea2 = false
     private var isExpandedCalculateQuantityContainers = false
+
+    private lateinit var btnCalculator : FloatingActionButton
+    private lateinit var btnInfoMeasure : FloatingActionButton
 
     private val tag = javaClass.name
 
@@ -119,6 +123,9 @@ class MainActivity : AppCompatActivity() {
         txtProductVolumePerArea = findViewById(R.id.txt_product_volume_per_area)
         txtArea3 = findViewById(R.id.txt_area_3)
         txtResults3 = findViewById(R.id.txt_results_3)
+
+        btnCalculator = findViewById(R.id.btn_calculator)
+        btnInfoMeasure = findViewById(R.id.btn_info_measure)
     }
 
     private fun setTheErrorInputLayout(
@@ -317,27 +324,37 @@ class MainActivity : AppCompatActivity() {
 
         val capacityContainerHtml = buildString {
             append("<b>Volume do recipiente: </b>")
-            append("$capacityContainer.")
+            append(capacityContainer)
         }
         txtCapacityContainer3.text = Html.fromHtml(capacityContainerHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val volumePerAreaHtml = buildString {
             append("<b>Quanto que o produto faz por área: </b>")
-            append("$volumePerArea.")
+            append(volumePerArea)
         }
         txtProductVolumePerArea.text = Html.fromHtml(volumePerAreaHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val area2Html = buildString {
             append("<b>Área total: </b>")
-            append("$totalArea.")
+            append(totalArea)
         }
         txtArea3.text = Html.fromHtml(area2Html, Html.FROM_HTML_MODE_LEGACY)
 
         val result2Html = buildString {
             append("<b>Resultado final: </b>")
-            append("quantidade de latas necessárias são $quantityContainers.")
+            append("quantidade de latas necessárias são $quantityContainers")
         }
         txtResults3.text = Html.fromHtml(result2Html, Html.FROM_HTML_MODE_LEGACY)
+    }
+
+    private fun showDialogCalculator() {
+        val dialog = CustomDialog(this@MainActivity)
+        dialog.showDialogCalculator()
+    }
+
+    private fun showDialogInfoMeasure() {
+        val dialog = CustomDialog(this@MainActivity)
+        dialog.showDialogInfoMeasure()
     }
 
     override fun onStart() {
@@ -348,17 +365,17 @@ class MainActivity : AppCompatActivity() {
         btnCalculate1.setOnClickListener { calculateVolumePerArea() }
 
         val volumeHtml = buildString {
-            append("<b>Volume: </b> (não informado).")
+            append("<b>Volume: </b> (não informado)")
         }
         txtVolume.text = Html.fromHtml(volumeHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val areaHtml = buildString {
-            append("<b>Área: </b> (não informado).")
+            append("<b>Área: </b> (não informado)")
         }
         txtArea.text = Html.fromHtml(areaHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val resultHtml = buildString {
-            append("<b>Resultado: </b> (não calculado).")
+            append("<b>Resultado: </b> (não calculado)")
         }
         txtVolumePerArea.text = Html.fromHtml(resultHtml, Html.FROM_HTML_MODE_LEGACY)
 
@@ -367,22 +384,22 @@ class MainActivity : AppCompatActivity() {
         btnCalculate2.setOnClickListener { calculateVolumePerArea2() }
 
         val capacityContainer = buildString {
-            append("<b>Volume do recipiente: </b> (não informado).")
+            append("<b>Volume do recipiente: </b> (não informado)")
         }
         txtCapacityContainer.text = Html.fromHtml(capacityContainer, Html.FROM_HTML_MODE_LEGACY)
 
         val volumePerVolumeHtml = buildString {
-            append("<b>Quantos mL o produto faz por litro: </b> (não informado).")
+            append("<b>Quantos mL o produto faz por litro: </b> (não informado)")
         }
         txtVolumePerVolume.text = Html.fromHtml(volumePerVolumeHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val area2Html = buildString {
-            append("<b>Área total: </b> (não informado).")
+            append("<b>Área total: </b> (não informado)")
         }
         txtArea2.text = Html.fromHtml(area2Html, Html.FROM_HTML_MODE_LEGACY)
 
         val result2Html = buildString {
-            append("<b>Resultado final: </b> (não calculado).")
+            append("<b>Resultado final: </b> (não calculado)")
         }
         txtResults2.text = Html.fromHtml(result2Html, Html.FROM_HTML_MODE_LEGACY)
 
@@ -391,28 +408,32 @@ class MainActivity : AppCompatActivity() {
         btnCalculate3.setOnClickListener { calculateQuantityContainers() }
 
         val capacity3Html = buildString {
-            append("<b>Capacidade total da lata: </b> (não informado).")
+            append("<b>Capacidade total da lata: </b> (não informado)")
         }
         txtCapacityContainer3.text = Html.fromHtml(capacity3Html, Html.FROM_HTML_MODE_LEGACY)
 
         val productVolumePerAreaHtml = buildString {
-            append("<b>Quanto que o produto faz por área: </b> (não informado).")
+            append("<b>Quanto que o produto faz por área: </b> (não informado)")
         }
         txtProductVolumePerArea.text =
             Html.fromHtml(productVolumePerAreaHtml, Html.FROM_HTML_MODE_LEGACY)
 
         val area3Html = buildString {
-            append("<b>Área total: </b> (não informado).")
+            append("<b>Área total: </b> (não informado)")
         }
         txtArea3.text = Html.fromHtml(area3Html, Html.FROM_HTML_MODE_LEGACY)
 
         val results3Html = buildString {
-            append("<b>Quantidade de latas necessárias: </b> (não calculado).")
+            append("<b>Quantidade de latas necessárias: </b> (não calculado)")
         }
         txtResults3.text = Html.fromHtml(results3Html, Html.FROM_HTML_MODE_LEGACY)
 
         expandedCalculateVolumePerArea.visibility = View.GONE
         expandedCalculateVolumePerArea2.visibility = View.GONE
         expandedCalculateQuantityContainers.visibility = View.GONE
+
+        btnCalculator.setOnClickListener { showDialogCalculator() }
+
+        btnInfoMeasure.setOnClickListener { showDialogInfoMeasure() }
     }
 }
