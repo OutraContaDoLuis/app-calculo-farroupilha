@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.view_pager)
 
         val arrayOfFragments = arrayListOf<Fragment>(
-            CementitiousWaterproofingFragment()
+            CalculateFragment()
         )
 
         viewpagerAdapter = ViewPagerAdapter(
